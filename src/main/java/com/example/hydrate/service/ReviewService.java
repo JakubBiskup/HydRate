@@ -33,6 +33,10 @@ public class ReviewService {
         return reviewRepository.findAll();
     }
 
+    public List<Review> listGivenWaterReviews(Water water){
+        return reviewRepository.findByWater(water);
+    }
+
     public Review saveOrUpdate(Review review){
         reviewRepository.save(review);
         return review;
