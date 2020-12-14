@@ -4,18 +4,20 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Water {
 
     @Id @GeneratedValue
     private Long id;
+    @NotNull
     private String name;
     private String company;
     private String source;
     @Column(length = 3000)
     private String description;
-    private int minerals;  //        mg/l
+    private Integer minerals;  //        mg/l
 
     public Water() {
     }
