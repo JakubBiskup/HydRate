@@ -49,7 +49,7 @@ public class WaterService {
             waterRepository.delete(water);
             return water;
         }else{
-            throw new WaterNotFoundException("water of id: "+id.toString()+" was not found");
+            throw new WaterNotFoundException("water of id: "+id.toString()+" was not found, it may have been deleted already");
         }
 
     }

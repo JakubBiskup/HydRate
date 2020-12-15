@@ -29,13 +29,13 @@ public class WaterController {
 
     @PutMapping("/water/{id}")
     Water editWater(@RequestBody Water editedWater, @PathVariable Long id) throws WaterNotFoundException {
-        Water waterTobBeEdited=waterService.getById(id);
-        waterTobBeEdited.setCompany(editedWater.getCompany());
-        waterTobBeEdited.setDescription(editedWater.getDescription());
-        waterTobBeEdited.setMinerals(editedWater.getMinerals());
-        waterTobBeEdited.setName(editedWater.getName());
-        waterTobBeEdited.setSource(editedWater.getSource());
-        return waterService.saveOrUpdate(waterTobBeEdited);
+        Water waterToBeEdited=waterService.getById(id);
+        waterToBeEdited.setCompany(editedWater.getCompany());
+        waterToBeEdited.setDescription(editedWater.getDescription());
+        waterToBeEdited.setMinerals(editedWater.getMinerals());
+        waterToBeEdited.setName(editedWater.getName());
+        waterToBeEdited.setSource(editedWater.getSource());
+        return waterService.saveOrUpdate(waterToBeEdited);
     }
 
     @GetMapping("/water/{id}")
