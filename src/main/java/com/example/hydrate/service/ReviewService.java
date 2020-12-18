@@ -9,6 +9,7 @@ import com.example.hydrate.repository.WaterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.validation.ConstraintViolationException;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,6 +52,9 @@ public class ReviewService {
     }
 
     public Review saveOrUpdate(Review review) throws WaterNotFoundException {
+        if (review.getWater()==null){
+            throw new ConstraintViolationException("water must not be null", null);
+        }
         if(waterRepository.findById(review.getWater().getId()).isPresent()) {
             reviewRepository.save(review);
             return review;
