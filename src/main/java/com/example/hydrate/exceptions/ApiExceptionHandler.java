@@ -16,8 +16,8 @@ public class ApiExceptionHandler {
 
     @ExceptionHandler
     public ResponseEntity<Object> handleObjectNotFoundException(ObjectNotFoundException exception){
-        ApiError error= new ApiError(exception.getMessage(), HttpStatus.NOT_FOUND, ZonedDateTime.now(ZoneId.of("Z")));
-        return  new ResponseEntity<>(error,HttpStatus.NOT_FOUND);
+        ApiError error= new ApiError(exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR, ZonedDateTime.now(ZoneId.of("Z")));
+        return  new ResponseEntity<>(error,HttpStatus.INTERNAL_SERVER_ERROR);
 
     }
 
