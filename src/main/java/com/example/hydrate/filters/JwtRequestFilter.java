@@ -58,7 +58,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         if(new AntPathMatcher().match("/authenticate", request.getRequestURI())){
             shouldNot=true;
         }
-        if(new AntPathMatcher().match("/water/**",request.getRequestURI())){
+        if(new AntPathMatcher().match("/water/**",request.getRequestURI()) && request.getMethod()=="GET"){
             shouldNot=true;
         }
         return shouldNot;

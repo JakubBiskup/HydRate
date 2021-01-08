@@ -1,9 +1,6 @@
 package com.example.hydrate.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -14,6 +11,7 @@ public class User {
     private Long id;
     @NotNull
     @NotEmpty
+    @Column(unique = true)
     private String username;
     @NotNull
     private String password;
