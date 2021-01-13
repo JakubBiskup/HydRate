@@ -30,14 +30,13 @@ public class ApiExceptionHandler {
         }
 
         Set<ConstraintViolation<?>> constraintViolationSet =exception.getConstraintViolations();
-        String errorMessage="Validation failed. Constraints violated:";
+        StringBuilder errorMessage= new StringBuilder("Validation failed. Constraints violated:");
         for (ConstraintViolation<?> constraintViolation:
              constraintViolationSet) {
-            errorMessage+=constraintViolation.getPropertyPath().toString()+" "+constraintViolation.getMessage()+".";
-
+            errorMessage.append(constraintViolation.getPropertyPath().toString()).append(" ").append(constraintViolation.getMessage()).append(".");
         }
 
-        ApiError error=new ApiError(errorMessage, HttpStatus.UNPROCESSABLE_ENTITY, ZonedDateTime.now(ZoneId.of("Z")));
+        ApiError error=new ApiError(errorMessage.toString(), HttpStatus.UNPROCESSABLE_ENTITY, ZonedDateTime.now(ZoneId.of("Z")));
         return new ResponseEntity<>(error,HttpStatus.UNPROCESSABLE_ENTITY);
     }
 }

@@ -19,17 +19,17 @@ public class WaterController {
     }
 
     @GetMapping("/water/all")
-    List<Water> allWater(){
+    public List<Water> allWater(){
         return waterService.listAll();
     }
 
     @PostMapping("/water")
-    Water addWater(@RequestBody Water water){
+    public Water addWater(@RequestBody Water water){
         return waterService.saveOrUpdate(water);
     }
 
     @PutMapping("/water/{id}")
-    Water editWater(@RequestBody Water editedWater, @PathVariable Long id) throws WaterNotFoundException {
+    public Water editWater(@RequestBody Water editedWater, @PathVariable Long id) throws WaterNotFoundException {
         Water waterToBeEdited=waterService.getById(id);
         waterToBeEdited.setCompany(editedWater.getCompany());
         waterToBeEdited.setDescription(editedWater.getDescription());
@@ -40,18 +40,18 @@ public class WaterController {
     }
 
     @GetMapping("/water/{id}")
-    Water singleWater(@PathVariable Long id) throws WaterNotFoundException{
+    public Water singleWater(@PathVariable Long id) throws WaterNotFoundException{
         return waterService.getById(id);
 
     }
 
     @DeleteMapping("/water/{id}")
-    Water deleteWater(@PathVariable Long id) throws WaterNotFoundException{
+    public Water deleteWater(@PathVariable Long id) throws WaterNotFoundException{
         return waterService.deleteById(id);
     }
 
     @GetMapping("/water/{id}/average_score")
-    Integer getWaterAvgScore(@PathVariable Long id) throws WaterNotFoundException {
+    public Integer getWaterAvgScore(@PathVariable Long id) throws WaterNotFoundException {
         return waterService.getAverageScore(waterService.getById(id));
     }
 

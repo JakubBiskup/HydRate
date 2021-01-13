@@ -20,27 +20,27 @@ public class ReviewController {
     }
 
     @GetMapping("/reviews/all")
-    List<Review> allReviews(){
+    public List<Review> allReviews(){
         return reviewService.listAll();
     }
 
     @GetMapping("/reviews/water/{water_id}")
-    List<Review> singleWaterReviews(@PathVariable Long water_id) throws WaterNotFoundException {
+    public List<Review> singleWaterReviews(@PathVariable Long water_id) throws WaterNotFoundException {
         return reviewService.listSingleWaterReviewsByWaterId(water_id);
     }
 
     @PostMapping("/reviews")
-    Review addReview(@RequestBody Review review) throws WaterNotFoundException {
+    public Review addReview(@RequestBody Review review) throws WaterNotFoundException {
         return reviewService.saveOrUpdate(review);
     }
 
     @GetMapping("/reviews/{id}")
-    Review singleReview(@PathVariable Long id) throws ReviewNotFoundException {
+    public Review singleReview(@PathVariable Long id) throws ReviewNotFoundException {
         return reviewService.getById(id);
     }
 
     @PutMapping("/reviews/{id}")
-    Review editReview(@RequestBody Review editedReview, @PathVariable Long id) throws ReviewNotFoundException, WaterNotFoundException {
+    public Review editReview(@RequestBody Review editedReview, @PathVariable Long id) throws ReviewNotFoundException, WaterNotFoundException {
         Review reviewToBeEdited=reviewService.getById(id);
         reviewToBeEdited.setScore(editedReview.getScore());
         reviewToBeEdited.setText(editedReview.getText());
@@ -49,7 +49,7 @@ public class ReviewController {
     }
 
     @DeleteMapping("/reviews/{id}")
-    Review deleteReview(@PathVariable Long id) throws ReviewNotFoundException {
+    public Review deleteReview(@PathVariable Long id) throws ReviewNotFoundException {
         return reviewService.deleteById(id);
     }
 }
